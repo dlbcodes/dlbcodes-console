@@ -73,7 +73,7 @@ const pct = (used: number, limit: number): number =>
                     You'll keep Pro access until the end of the billing period.
                 </span>
             </div>
-            <Button variant="secondary">Cancel plan</Button>
+            <Button variant="destructive">Cancel plan</Button>
         </div>
     </div>
 </template>

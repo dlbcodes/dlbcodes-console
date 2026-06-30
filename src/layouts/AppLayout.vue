@@ -69,8 +69,8 @@ const helpOpen = ref(false);
 
 <template>
     <SidebarProvider>
-        <div class="flex h-dvh">
-            <Sidebar>
+        <div class="flex h-dvh bg-bg-surface">
+            <Sidebar class="border-0">
                 <!-- Brand -->
                 <SidebarHeader class="flex flex-col gap-4">
                     <div class="flex w-full items-center justify-between">
@@ -101,6 +101,7 @@ const helpOpen = ref(false);
                             :as="RouterLink"
                             :to="item.to"
                             :active="route.path.startsWith(item.to)"
+                            class="tracking-tight"
                         >
                             <component
                                 :is="item.icon"
@@ -181,13 +182,15 @@ const helpOpen = ref(false);
             </Sidebar>
 
             <!-- Main area -->
-            <div class="flex min-w-0 flex-1 flex-col">
+            <div
+                class="relative mt-0 flex-1 overflow-auto rounded-none bg-bg-base shadow-md md:mt-2 md:rounded-tl-2xl"
+            >
                 <header
                     class="flex items-center gap-2 border-b border-border-subtle p-3"
                 >
                     <SidebarTrigger />
                     <span
-                        class="font-mono text-lg tracking-tight text-text-primary"
+                        class="font-mono text-base tracking-tight text-text-primary"
                     >
                         {{ pageTitle }}
                     </span>

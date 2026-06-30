@@ -48,7 +48,7 @@ const feed = computed<FeedItem[]>(() =>
 </script>
 
 <template>
-    <div class="flex flex-col gap-6 px-6 py-8 md:px-10">
+    <div class="flex w-full flex-col gap-6 px-6 py-8 md:px-10">
         <!-- Toolbar -->
         <div class="flex w-full items-center justify-between gap-3">
             <p class="text-sm text-text-secondary">

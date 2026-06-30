@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import {
     Panel,
     PanelContent,
@@ -16,8 +17,8 @@ import {
     PhTrash,
 } from "@phosphor-icons/vue";
 import { useTimeAgo } from "@vueuse/core";
+import CreateKeyModal from "./CreateKeyModal.vue";
 
-// Stubbed API keys — a forker replaces with real data.
 const MINUTE = 1000 * 60;
 const DAY = MINUTE * 60 * 24;
 const now = Date.now();
@@ -45,6 +46,11 @@ const keys = [
         createdAt: now - 3 * DAY,
     },
 ];
+
+const createOpen = ref(false);
+const onCreate = (): void => {
+    // Stubbed — a forker persists the new key here.
+};
 </script>
 
 <template>
@@ -53,8 +59,9 @@ const keys = [
             <p class="text-sm text-text-secondary">
                 Keys for authenticating API requests. Keep them secret.
             </p>
-            <Button variant="primary" size="sm">
-                <PhPlus class="size-4" aria-hidden="true" /> Create key
+            <Button variant="primary" size="sm" @click="createOpen = true">
+                <PhPlus class="size-4" aria-hidden="true" />
+                Create key
             </Button>
         </div>
 
@@ -66,7 +73,7 @@ const keys = [
                             k.name
                         }}</span>
                         <Badge
-                            :variant="k.env === 'Live' ? 'primary' : 'pending'"
+                            :variant="k.env === 'Live' ? 'primary' : 'neutral'"
                             >{{ k.env }}</Badge
                         >
                     </div>
@@ -78,12 +85,14 @@ const keys = [
                     Created {{ useTimeAgo(k.createdAt).value }}
                 </span>
                 <Dropdown placement="bottom-end">
-                    <DropdownTrigger>
-                        <PhDotsThreeVertical
-                            class="size-5"
-                            weight="bold"
-                            aria-hidden="true"
-                        />
+                    <DropdownTrigger as-child>
+                        <Button variant="icon" size="icon">
+                            <PhDotsThreeVertical
+                                class="size-5"
+                                weight="bold"
+                                aria-hidden="true"
+                            />
+                        </Button>
                     </DropdownTrigger>
                     <DropdownContent size="fit">
                         <DropdownItem>
@@ -100,5 +109,7 @@ const keys = [
                 </Dropdown>
             </PanelContent>
         </Panel>
+
+        <CreateKeyModal v-model:open="createOpen" @create="onCreate" />
     </div>
 </template>

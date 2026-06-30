@@ -41,7 +41,7 @@ const fmtDuration = (s?: number): string => (s ? `${s}s` : "—");
 </script>
 
 <template>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-6 w-full">
         <div
             v-for="group in groups"
             :key="group.label"

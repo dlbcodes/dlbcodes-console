@@ -44,7 +44,7 @@ const onChange = (index: number): void => {
                 </TabsTrigger>
             </TabsList>
 
-            <TabsPanels class="mt-8">
+            <TabsPanels class="mt-6 w-full max-w-4xl">
                 <TabsContent><TeamMembers /></TabsContent>
                 <TabsContent><TeamSettings /></TabsContent>
             </TabsPanels>

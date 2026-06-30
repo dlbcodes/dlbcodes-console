@@ -98,7 +98,7 @@ const planVariant = (plan: WorkspacePlan): "primary" | "pending" =>
                         @click="
                             () => {
                                 close();
-                                router.push('/settings');
+                                router.push('/team');
                             }
                         "
                     >

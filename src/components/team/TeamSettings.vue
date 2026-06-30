@@ -25,7 +25,7 @@ const onDelete = (): void => {
 </script>
 
 <template>
-    <div class="flex max-w-xl flex-col gap-6">
+    <div class="flex flex-col gap-6">
         <Field>
             <FieldLabel>Workspace name</FieldLabel>
             <FieldContent>

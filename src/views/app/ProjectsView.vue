@@ -62,7 +62,7 @@ const confirmDelete = (): void => {
         </div>
 
         <!-- Two-column split: context sidebar + projects -->
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[380px_1fr]">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_3fr]">
             <!-- Left: context -->
             <div class="flex flex-col gap-4">
                 <UsagePanel :usage="usage" />
