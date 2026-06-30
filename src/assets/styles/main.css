@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import "@dlbcodes/my-design-system/tokens.css";
+@source "../../../node_modules/@dlbcodes/my-design-system/dist";
+@import "./fonts.css" layer(utilities);
+
+@theme {
+    --font-sans: "Geist", system-ui, sans-serif;
+    --font-serif: "Instrument Serif", system-ui, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+@layer base {
+    html {
+        @apply antialiased;
+    }
+
+    body {
+        @apply min-h-dvh bg-bg-base text-text-primary font-mono tracking-tight;
+    }
+}
+
+:root,
+[data-theme="lattice"] {
+    /* --color-accent-pro-200: oklch(0.66 0.22 1); */
+    --color-accent-pro-100: oklch(0.66 0.22 1);
+}
+
+/* ─── Zinc — shadcn's cool-gray base; near monochrome ─── */
+[data-theme="zinc"] {
+    /* Backgrounds */
+    --color-bg-base: oklch(1 0 0);
+    --color-bg-surface: oklch(0.976 0 0);
+    --color-bg-raised: oklch(1 0 0);
+    --color-bg-elevated: oklch(0.9851 0 0);
+    --color-bg-subtle: oklch(0.95 0 0);
+    --color-bg-inverse: oklch(0.2046 0 0);
+
+    /* Text */
+    --color-text-primary: oklch(0.1448 0 0);
+    --color-text-secondary: oklch(0.5555 0 0);
+    --color-text-tertiary: oklch(0.7155 0 0);
+    --color-text-inverse: oklch(0.9851 0 0);
+
+    /* Borders */
+    --color-border-subtle: oklch(0.9219 0 0);
+    --color-border-default: oklch(0.9219 0 0);
+    --color-border-strong: oklch(0.7155 0 0);
+
+    /* Brand */
+    --color-brand-100: oklch(0.1448 0 0);
+    --color-brand-200: oklch(0.2046 0 0);
+
+    --color-accent-pro-200: oklch(0.66 0.22 37.3);
+    --color-accent-pro-200: oklch(0.66 0.22 37.3);
+}
+
+/* ─── Slate  ─── */
+[data-theme="slate"] {
+    /* Backgrounds */
+    --color-bg-base: oklch(0.9911 0 0);
+    --color-bg-surface: oklch(0.9674 0.0013 286.37);
+    --color-bg-raised: oklch(1 0 0);
+    --color-bg-elevated: oklch(0.9791 0 0);
+    --color-bg-subtle: oklch(0.9404 0.0013 286.37);
+    --color-bg-inverse: oklch(0.1763 0.014 258.36);
+
+    /* Text */
+    --color-text-primary: oklch(0.1763 0.014 258.36);
+    --color-text-secondary: oklch(0.5517 0.0138 285.94);
+    --color-text-tertiary: oklch(0.6793 0.0131 286.05);
+    --color-text-inverse: oklch(1 0 0);
+
+    /* Borders */
+    --color-border-subtle: oklch(0.9197 0.004 286.32);
+    --color-border-default: oklch(0.9197 0.004 286.32);
+    --color-border-strong: oklch(0.7587 0.0071 286.23);
+
+    /* Brand — red */
+    --color-brand-100: oklch(0.5327 0.2186 29.23); /* #cd0000 darker hover */
+    --color-brand-200: oklch(0.5882 0.2309 28.29); /* #e61919 primary */
+}
+
+/* Animations */
+@keyframes dot-cycle {
+    0% {
+        background-color: #e4f221;
+    }
+    33% {
+        background-color: #934cff;
+    }
+    66% {
+        background-color: #fb4d00;
+    }
+    100% {
+        background-color: #e4f221;
+    }
+}
+
+.group:hover .dot {
+    animation: dot-cycle 2.5s linear infinite;
+}
+
+.group:hover .dot:nth-child(2) {
+    animation-delay: -1s;
+}
+.group:hover .dot:nth-child(3) {
+    animation-delay: -2s;
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.animate-breathe {
+    animation: breathe 1.5s ease-in-out infinite;
+}
