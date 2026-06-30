@@ -1,157 +1,53 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import {
-    Panel,
-    PanelContent,
-    Avatar,
-    Badge,
-    Button,
-    Dropdown,
-    DropdownTrigger,
-    DropdownContent,
-    DropdownItem,
+    Tabs,
+    TabsList,
+    TabsTrigger,
+    TabsPanels,
+    TabsContent,
 } from "@dlbcodes/my-design-system";
-import {
-    PhPlus,
-    PhDotsThreeVertical,
-    PhUserGear,
-    PhUserMinus,
-} from "@phosphor-icons/vue";
-import InviteMemberModal from "../../components/team/InviteMemberModal.vue";
-import ChangeRoleModal from "../../components/team/ChangeRoleModal.vue";
-import RemoveMemberModal from "../../components/team/RemoveMemberModal.vue";
-import { members } from "../../data/mock";
-import { useWorkspace } from "../../composables/useWorkspace";
-import type { Role, Member } from "../../types/console";
+import { PhUsers, PhGear } from "@phosphor-icons/vue";
+import TeamMembers from "../../components/team/TeamMembers.vue";
+import TeamSettings from "../../components/team/TeamSettings.vue";
 
-const { active } = useWorkspace();
+const route = useRoute();
+const router = useRouter();
 
-const workspaceMembers = computed(() =>
-    members.filter((m) => m.workspaceId === active.value.id),
-);
-
-const roleVariant = (role: Role): "primary" | "neutral" =>
-    role === "Owner" ? "primary" : "neutral";
-
-// Invite
-const inviteOpen = ref(false);
-const onInvite = (): void => {
-    // Stubbed — a forker sends the real invite here.
-};
-
-// Change role / Remove — single instance each, target tracked in a ref.
-const target = ref<Member | null>(null);
-const roleOpen = ref(false);
-const removeOpen = ref(false);
-
-const askChangeRole = (member: Member): void => {
-    target.value = member;
-    roleOpen.value = true;
-};
-const askRemove = (member: Member): void => {
-    target.value = member;
-    removeOpen.value = true;
-};
-
-const onSaveRole = (): void => {
-    // Stubbed — a forker persists the new role here.
-};
-const onRemove = (): void => {
-    // Stubbed — a forker removes the member here.
+const TABS = ["members", "settings"] as const;
+const activeIndex = computed(() => {
+    const i = TABS.indexOf(route.query.tab as (typeof TABS)[number]);
+    return i === -1 ? 0 : i;
+});
+const onChange = (index: number): void => {
+    router.replace({ query: { ...route.query, tab: TABS[index] } });
 };
 </script>
 
 <template>
     <div class="flex flex-col gap-6 px-6 py-8 md:px-10">
-        <!-- Toolbar -->
-        <div class="flex items-center justify-between gap-3">
+        <div class="flex flex-col gap-1">
+            <h1 class="font-mono text-xl text-text-primary">Team</h1>
             <p class="text-sm text-text-secondary">
-                People with access to {{ active.name }}.
+                Manage members and workspace settings.
             </p>
-            <Button variant="primary" size="sm" @click="inviteOpen = true">
-                <PhPlus class="size-4" aria-hidden="true" /> Invite member
-            </Button>
         </div>
 
-        <!-- Member list -->
-        <div class="flex flex-col gap-2">
-            <Panel
-                v-for="m in workspaceMembers"
-                :key="m.id"
-                class="overflow-visible"
-            >
-                <PanelContent
-                    class="flex items-center gap-4 overflow-visible p-4"
-                >
-                    <Avatar
-                        :name="m.name || m.email"
-                        :src="m.avatar"
-                        size="base"
-                    />
-                    <div class="flex min-w-0 flex-1 flex-col gap-0.5">
-                        <div class="flex items-center gap-2">
-                            <span
-                                class="truncate text-sm font-medium text-text-primary"
-                            >
-                                {{ m.name || m.email }}
-                            </span>
-                            <Badge v-if="m.pending" variant="pending"
-                                >Pending</Badge
-                            >
-                        </div>
-                        <span
-                            class="truncate font-mono text-xs text-text-tertiary"
-                            >{{ m.email }}</span
-                        >
-                    </div>
-                    <Badge :variant="roleVariant(m.role)">{{ m.role }}</Badge>
-                    <Dropdown placement="bottom-end">
-                        <DropdownTrigger as-child>
-                            <Button variant="icon" size="icon">
-                                <PhDotsThreeVertical
-                                    class="size-5"
-                                    weight="bold"
-                                    aria-hidden="true"
-                                />
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownContent size="fit">
-                            <DropdownItem
-                                :disabled="m.role === 'Owner'"
-                                class="whitespace-nowrap"
-                                @click="askChangeRole(m)"
-                            >
-                                <PhUserGear class="size-4" aria-hidden="true" />
-                                Change role
-                            </DropdownItem>
-                            <DropdownItem
-                                :disabled="m.role === 'Owner'"
-                                @click="askRemove(m)"
-                            >
-                                <PhUserMinus
-                                    class="size-4"
-                                    aria-hidden="true"
-                                />
-                                Remove
-                            </DropdownItem>
-                        </DropdownContent>
-                    </Dropdown>
-                </PanelContent>
-            </Panel>
-        </div>
+        <Tabs :selected-index="activeIndex" @change="onChange">
+            <TabsList class="justify-start overflow-x-auto *:shrink-0">
+                <TabsTrigger>
+                    <PhUsers class="size-4" aria-hidden="true" /> Members
+                </TabsTrigger>
+                <TabsTrigger>
+                    <PhGear class="size-4" aria-hidden="true" /> Settings
+                </TabsTrigger>
+            </TabsList>
 
-        <InviteMemberModal v-model:open="inviteOpen" @invite="onInvite" />
-        <ChangeRoleModal
-            v-model:open="roleOpen"
-            :name="target?.name || target?.email || ''"
-            :current-role="target?.role ?? 'Member'"
-            @save="onSaveRole"
-        />
-        <RemoveMemberModal
-            v-model:open="removeOpen"
-            :name="target?.name || target?.email || ''"
-            :workspace="active.name"
-            @confirm="onRemove"
-        />
+            <TabsPanels class="mt-8">
+                <TabsContent><TeamMembers /></TabsContent>
+                <TabsContent><TeamSettings /></TabsContent>
+            </TabsPanels>
+        </Tabs>
     </div>
 </template>

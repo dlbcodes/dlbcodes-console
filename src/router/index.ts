@@ -54,10 +54,10 @@ const routes: RouteRecordRaw[] = [
 				meta: { title: "Team" },
 			},
 			{
-				path: "settings",
-				name: "settings",
+				path: "account",
+				name: "account",
 				component: () => import("../views/app/SettingsView.vue"),
-				meta: { title: "Settings" },
+				meta: { title: "Account" },
 			},
 		],
 	},

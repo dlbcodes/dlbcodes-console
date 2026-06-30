@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { RouterLink, useRoute } from "vue-router";
 import {
     SidebarProvider,
@@ -12,16 +11,19 @@ import {
     SidebarItem,
     SidebarFooter,
     Button,
+    Badge,
     Separator,
 } from "@dlbcodes/my-design-system";
 import {
     PhStack,
     PhPulse,
-    PhGear,
     PhUsers,
     PhArrowCircleUp,
     PhMagnifyingGlass,
     PhGithubLogo,
+    PhGlobe,
+    PhHardDrives,
+    PhFolder,
 } from "@phosphor-icons/vue";
 import BrandMark from "../components/BrandMark.vue";
 import ThemeSwitcher from "../components/ThemeSwitcher.vue";
@@ -31,19 +33,34 @@ import ShortcutsModal from "../components/app/ShortcutsModal.vue";
 import HelpModal from "../components/app/HelpModal.vue";
 import CommandPalette from "../components/app/CommandPalette.vue";
 import WorkspaceSwitcher from "../components/app/WorkspaceSwitcher.vue";
-import { siteConfig } from "../config/site.ts";
+import { projects } from "../data/mock";
+import { useWorkspace } from "../composables/useWorkspace";
 
 const route = useRoute();
 const pageTitle = computed(() => (route.meta.title as string) ?? "");
+const { active } = useWorkspace();
 
-// Top-level navigation. Resources (projects, etc.) live on their own pages,
-// not in the sidebar — the sidebar is just navigation.
+// Top-level navigation. The sidebar is navigation; resources live on their pages.
 const nav = [
     { label: "Projects", icon: PhStack, to: "/projects", match: "projects" },
     { label: "Activity", icon: PhPulse, to: "/activity", match: "activity" },
     { label: "Team", icon: PhUsers, to: "/team", match: "team" },
-    { label: "Settings", icon: PhGear, to: "/settings", match: "settings" },
 ];
+
+// Not built yet — shown disabled with a "Soon" badge to hint at the roadmap.
+const soon = [
+    { label: "Domains", icon: PhGlobe },
+    { label: "Storage", icon: PhHardDrives },
+];
+
+// A few recent projects in the active workspace, for quick jump-to access.
+const recentProjects = computed(() =>
+    projects
+        .filter((p) => p.workspaceId === active.value.id)
+        .slice()
+        .sort((a, b) => b.updatedAt - a.updatedAt)
+        .slice(0, 4),
+);
 
 const commandOpen = ref(false);
 const shortcutsOpen = ref(false);
@@ -56,7 +73,7 @@ const helpOpen = ref(false);
             <Sidebar>
                 <!-- Brand -->
                 <SidebarHeader class="flex flex-col gap-4">
-                    <div class="flex items-center justify-between w-full">
+                    <div class="flex w-full items-center justify-between">
                         <BrandMark />
                         <Button
                             variant="secondary"
@@ -76,7 +93,7 @@ const helpOpen = ref(false);
                 <!-- End Brand -->
 
                 <SidebarContent>
-                    <!-- Navigation -->
+                    <!-- Main nav -->
                     <SidebarGroup>
                         <SidebarItem
                             v-for="item in nav"
@@ -92,8 +109,44 @@ const helpOpen = ref(false);
                             />
                             <span class="flex-1">{{ item.label }}</span>
                         </SidebarItem>
+
+                        <!-- Coming soon (disabled) -->
+                        <SidebarItem
+                            v-for="item in soon"
+                            :key="item.label"
+                            as="button"
+                            disabled
+                        >
+                            <component
+                                :is="item.icon"
+                                class="size-4 shrink-0"
+                                aria-hidden="true"
+                            />
+                            <span class="flex-1 text-left">{{
+                                item.label
+                            }}</span>
+                            <Badge variant="neutral">Soon</Badge>
+                        </SidebarItem>
                     </SidebarGroup>
-                    <!-- End Navigation -->
+
+                    <!-- Recent projects -->
+                    <SidebarGroup label="Recent projects" class="pt-6">
+                        <SidebarItem
+                            v-for="p in recentProjects"
+                            :key="p.id"
+                            :as="RouterLink"
+                            :to="`/projects/${p.id}`"
+                            :active="route.params.id === p.id"
+                        >
+                            <PhFolder
+                                class="size-4 shrink-0"
+                                aria-hidden="true"
+                            />
+                            <span class="flex-1 truncate font-mono text-xs">{{
+                                p.name
+                            }}</span>
+                        </SidebarItem>
+                    </SidebarGroup>
                 </SidebarContent>
 
                 <!-- Footer -->
@@ -104,7 +157,7 @@ const helpOpen = ref(false);
                     />
                     <Separator class="my-2" />
                     <Button
-                        to="/settings?tab=billing"
+                        to="/account?tab=billing"
                         variant="outline"
                         class="group flex w-full items-center bg-bg-raised px-2"
                     >
@@ -141,7 +194,7 @@ const helpOpen = ref(false);
                     <div class="ml-auto flex items-center gap-x-2">
                         <Button
                             as="a"
-                            :to="siteConfig.links.github"
+                            to="https://github.com/dlbcodes/dlbcodes-console"
                             target="_blank"
                             variant="icon"
                             size="icon"

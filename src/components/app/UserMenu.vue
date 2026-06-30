@@ -75,10 +75,10 @@ const logout = (): void => {
         </DropdownTrigger>
 
         <DropdownContent size="3xs">
-            <DropdownItem @click="go('/app')">
+            <DropdownItem @click="go('/')">
                 <PhSquaresFour class="size-4" aria-hidden="true" /> Overview
             </DropdownItem>
-            <DropdownItem @click="go('/app/settings')" class="justify-between">
+            <DropdownItem @click="go('/account')" class="justify-between">
                 <span class="flex items-center gap-x-2">
                     <PhGear class="size-4" aria-hidden="true" />
                     Settings

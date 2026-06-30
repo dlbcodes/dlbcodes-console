@@ -53,3 +53,15 @@ export interface Member {
 	avatar?: string;
 	pending?: boolean;
 }
+
+// Shared shape for the deployment timeline (a deployment plus an id).
+export interface TimelineItem {
+	id: string;
+	status: DeploymentStatus;
+	message: string;
+	branch: string;
+	commit: string;
+	author: string;
+	createdAt: number;
+	duration?: number;
+}
