@@ -9,7 +9,7 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-	name: "Atlas",
+	name: "Forge",
 	description:
 		"A reference application showcasing @dlbcodes/my-design-system — fully themeable, accessible, built from reusable components.",
 	url: "https://dlbcodes-ui-showcase.vercel.app",

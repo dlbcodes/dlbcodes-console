@@ -15,6 +15,9 @@ import {
     EmptyDescription,
 } from "@dlbcodes/my-design-system";
 import {
+    PhSquaresFour,
+    PhPulse,
+    PhGear,
     PhArrowSquareOut,
     PhGlobe,
     PhArrowClockwise,
@@ -101,9 +104,18 @@ const onDelete = (): void => {
 
         <Tabs :selected-index="activeIndex" @change="onTab">
             <TabsList>
-                <TabsTrigger>Overview</TabsTrigger>
-                <TabsTrigger>Activity</TabsTrigger>
-                <TabsTrigger>Settings</TabsTrigger>
+                <TabsTrigger>
+                    <PhSquaresFour class="size-4" aria-hidden="true" />
+                    Overview
+                </TabsTrigger>
+                <TabsTrigger>
+                    <PhPulse class="size-4" aria-hidden="true" />
+                    Activity
+                </TabsTrigger>
+                <TabsTrigger>
+                    <PhGear class="size-4" aria-hidden="true" />
+                    Settings
+                </TabsTrigger>
             </TabsList>
 
             <TabsPanels class="mt-6 w-full max-w-4xl">
