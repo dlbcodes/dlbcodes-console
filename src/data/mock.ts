@@ -74,7 +74,7 @@ export const projects: Project[] = [
 		framework: "Node",
 		status: "building",
 		repo: "acme/api-gateway",
-		domain: "api.acme.dev",
+		domain: "https://picdash.co",
 		region: "iad1",
 		updatedAt: now - 2 * MINUTE,
 		deployments: [

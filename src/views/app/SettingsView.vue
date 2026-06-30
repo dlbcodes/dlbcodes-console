@@ -36,9 +36,7 @@ const onChange = (index: number): void => {
         </div>
 
         <Tabs :selected-index="activeIndex" @change="onChange">
-            <TabsList
-                class="w-full max-w-full justify-start overflow-x-auto [&>*]:shrink-0"
-            >
+            <TabsList class="justify-start overflow-x-auto *:shrink-0">
                 <TabsTrigger>
                     <PhUser class="size-4" aria-hidden="true" /> Profile
                 </TabsTrigger>

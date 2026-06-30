@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {
     Panel,
     PanelContent,
@@ -17,9 +17,12 @@ import {
     PhUserGear,
     PhUserMinus,
 } from "@phosphor-icons/vue";
+import InviteMemberModal from "../../components/team/InviteMemberModal.vue";
+import ChangeRoleModal from "../../components/team/ChangeRoleModal.vue";
+import RemoveMemberModal from "../../components/team/RemoveMemberModal.vue";
 import { members } from "../../data/mock";
 import { useWorkspace } from "../../composables/useWorkspace";
-import type { Role } from "../../types/console";
+import type { Role, Member } from "../../types/console";
 
 const { active } = useWorkspace();
 
@@ -29,24 +32,57 @@ const workspaceMembers = computed(() =>
 
 const roleVariant = (role: Role): "primary" | "neutral" =>
     role === "Owner" ? "primary" : "neutral";
+
+// Invite
+const inviteOpen = ref(false);
+const onInvite = (): void => {
+    // Stubbed — a forker sends the real invite here.
+};
+
+// Change role / Remove — single instance each, target tracked in a ref.
+const target = ref<Member | null>(null);
+const roleOpen = ref(false);
+const removeOpen = ref(false);
+
+const askChangeRole = (member: Member): void => {
+    target.value = member;
+    roleOpen.value = true;
+};
+const askRemove = (member: Member): void => {
+    target.value = member;
+    removeOpen.value = true;
+};
+
+const onSaveRole = (): void => {
+    // Stubbed — a forker persists the new role here.
+};
+const onRemove = (): void => {
+    // Stubbed — a forker removes the member here.
+};
 </script>
 
 <template>
-    <div class="flex flex-col gap-6 px-6 md:px-10 py-8">
+    <div class="flex flex-col gap-6 px-6 py-8 md:px-10">
         <!-- Toolbar -->
         <div class="flex items-center justify-between gap-3">
             <p class="text-sm text-text-secondary">
                 People with access to {{ active.name }}.
             </p>
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="sm" @click="inviteOpen = true">
                 <PhPlus class="size-4" aria-hidden="true" /> Invite member
             </Button>
         </div>
 
         <!-- Member list -->
         <div class="flex flex-col gap-2">
-            <Panel v-for="m in workspaceMembers" :key="m.id">
-                <PanelContent class="flex items-center gap-4 p-4">
+            <Panel
+                v-for="m in workspaceMembers"
+                :key="m.id"
+                class="overflow-visible"
+            >
+                <PanelContent
+                    class="flex items-center gap-4 overflow-visible p-4"
+                >
                     <Avatar
                         :name="m.name || m.email"
                         :src="m.avatar"
@@ -70,19 +106,28 @@ const roleVariant = (role: Role): "primary" | "neutral" =>
                     </div>
                     <Badge :variant="roleVariant(m.role)">{{ m.role }}</Badge>
                     <Dropdown placement="bottom-end">
-                        <DropdownTrigger>
-                            <PhDotsThreeVertical
-                                class="size-5"
-                                weight="bold"
-                                aria-hidden="true"
-                            />
+                        <DropdownTrigger as-child>
+                            <Button variant="icon" size="icon">
+                                <PhDotsThreeVertical
+                                    class="size-5"
+                                    weight="bold"
+                                    aria-hidden="true"
+                                />
+                            </Button>
                         </DropdownTrigger>
                         <DropdownContent size="fit">
-                            <DropdownItem :disabled="m.role === 'Owner'">
+                            <DropdownItem
+                                :disabled="m.role === 'Owner'"
+                                class="whitespace-nowrap"
+                                @click="askChangeRole(m)"
+                            >
                                 <PhUserGear class="size-4" aria-hidden="true" />
                                 Change role
                             </DropdownItem>
-                            <DropdownItem :disabled="m.role === 'Owner'">
+                            <DropdownItem
+                                :disabled="m.role === 'Owner'"
+                                @click="askRemove(m)"
+                            >
                                 <PhUserMinus
                                     class="size-4"
                                     aria-hidden="true"
@@ -94,5 +139,19 @@ const roleVariant = (role: Role): "primary" | "neutral" =>
                 </PanelContent>
             </Panel>
         </div>
+
+        <InviteMemberModal v-model:open="inviteOpen" @invite="onInvite" />
+        <ChangeRoleModal
+            v-model:open="roleOpen"
+            :name="target?.name || target?.email || ''"
+            :current-role="target?.role ?? 'Member'"
+            @save="onSaveRole"
+        />
+        <RemoveMemberModal
+            v-model:open="removeOpen"
+            :name="target?.name || target?.email || ''"
+            :workspace="active.name"
+            @confirm="onRemove"
+        />
     </div>
 </template>

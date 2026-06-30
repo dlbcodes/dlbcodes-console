@@ -144,7 +144,7 @@ const goToSettings = (): void => {
 
             <!-- Latest deployment -->
             <div
-                class="flex items-center gap-2 border-t border-border-subtle pt-3 text-xs text-text-secondary"
+                class="flex items-center gap-2 pt-1 text-xs text-text-secondary"
             >
                 <PhCircle
                     class="size-2.5 shrink-0"
@@ -152,7 +152,9 @@ const goToSettings = (): void => {
                     :class="statusColor[project.status]"
                     aria-hidden="true"
                 />
-                <span class="min-w-0 flex-1 truncate">
+                <span
+                    class="min-w-0 flex-1 truncate font-medium text-text-primary"
+                >
                     {{ latest?.message ?? "No deployments yet" }}
                 </span>
             </div>

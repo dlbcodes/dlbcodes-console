@@ -14,7 +14,7 @@ export const siteConfig: SiteConfig = {
 		"A reference application showcasing @dlbcodes/my-design-system — fully themeable, accessible, built from reusable components.",
 	url: "https://dlbcodes-ui-showcase.vercel.app",
 	links: {
-		github: "https://github.com/dlbcodes/dlbcodes-ui-showcase",
+		github: "https://github.com/dlbcodes/dlbcodes-console",
 		twitter: "https://twitter.com/dlbcodes",
 	},
 };

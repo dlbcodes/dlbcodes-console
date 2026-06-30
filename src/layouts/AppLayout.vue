@@ -31,6 +31,7 @@ import ShortcutsModal from "../components/app/ShortcutsModal.vue";
 import HelpModal from "../components/app/HelpModal.vue";
 import CommandPalette from "../components/app/CommandPalette.vue";
 import WorkspaceSwitcher from "../components/app/WorkspaceSwitcher.vue";
+import { siteConfig } from "../config/site.ts";
 
 const route = useRoute();
 const pageTitle = computed(() => (route.meta.title as string) ?? "");
@@ -140,7 +141,7 @@ const helpOpen = ref(false);
                     <div class="ml-auto flex items-center gap-x-2">
                         <Button
                             as="a"
-                            to="https://github.com/dlbcodes/dlbcodes-console"
+                            :to="siteConfig.links.github"
                             target="_blank"
                             variant="icon"
                             size="icon"
