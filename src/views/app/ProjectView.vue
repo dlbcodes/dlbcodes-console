@@ -118,7 +118,7 @@ const onDelete = (): void => {
                 </TabsTrigger>
             </TabsList>
 
-            <TabsPanels class="mt-6 w-full max-w-4xl">
+            <TabsPanels class="mt-6 w-full max-w-3xl">
                 <TabsContent>
                     <ProjectOverviewTab :project="project" />
                 </TabsContent>

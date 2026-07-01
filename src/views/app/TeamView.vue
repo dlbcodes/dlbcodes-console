@@ -28,7 +28,7 @@ const onChange = (index: number): void => {
 <template>
     <div class="flex flex-col gap-6 px-6 py-8 md:px-10">
         <div class="flex flex-col gap-1">
-            <h1 class="font-mono text-xl text-text-primary">Team</h1>
+            <h1 class="text-xl text-text-primary">Team</h1>
             <p class="text-sm text-text-secondary">
                 Manage members and workspace settings.
             </p>
@@ -44,7 +44,7 @@ const onChange = (index: number): void => {
                 </TabsTrigger>
             </TabsList>
 
-            <TabsPanels class="mt-6 w-full max-w-4xl">
+            <TabsPanels class="mt-6 w-full max-w-3xl">
                 <TabsContent><TeamMembers /></TabsContent>
                 <TabsContent><TeamSettings /></TabsContent>
             </TabsPanels>

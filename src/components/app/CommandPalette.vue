@@ -11,13 +11,18 @@ import {
 } from "@dlbcodes/my-design-system";
 import {
     PhMagnifyingGlass,
-    PhPlus,
-    PhGear,
+    PhStack,
+    PhPulse,
+    PhUsers,
+    PhUser,
     PhCreditCard,
     PhKeyboard,
     PhQuestion,
+    PhFolder,
 } from "@phosphor-icons/vue";
 import type { Component } from "vue";
+import { projects } from "../../data/mock";
+import { useWorkspace } from "../../composables/useWorkspace";
 
 const open = defineModel<boolean>("open", { required: true });
 
@@ -27,6 +32,7 @@ const emit = defineEmits<{
 }>();
 
 const router = useRouter();
+const { active } = useWorkspace();
 
 interface Command {
     id: string;
@@ -36,28 +42,42 @@ interface Command {
     run: () => void;
 }
 
-// Static command list — add your own actions here. Each `run` fires on select.
-const commands: Command[] = [
+// Static navigation + actions.
+const staticCommands: Command[] = [
     {
-        id: "new-chat",
-        label: "New chat",
-        icon: PhPlus,
-        keywords: "create conversation start",
-        run: () => router.push("/app"),
+        id: "projects",
+        label: "Go to Projects",
+        icon: PhStack,
+        keywords: "projects home dashboard",
+        run: () => router.push("/projects"),
     },
     {
-        id: "settings",
-        label: "Go to settings",
-        icon: PhGear,
-        keywords: "preferences account",
-        run: () => router.push("/app/settings"),
+        id: "activity",
+        label: "Go to Activity",
+        icon: PhPulse,
+        keywords: "activity deployments feed",
+        run: () => router.push("/activity"),
+    },
+    {
+        id: "team",
+        label: "Go to Team",
+        icon: PhUsers,
+        keywords: "team members workspace settings",
+        run: () => router.push("/team"),
+    },
+    {
+        id: "account",
+        label: "Go to Account",
+        icon: PhUser,
+        keywords: "account profile settings preferences",
+        run: () => router.push("/account"),
     },
     {
         id: "billing",
-        label: "Go to billing",
+        label: "Go to Billing",
         icon: PhCreditCard,
         keywords: "plan upgrade subscription usage",
-        run: () => router.push("/app/settings?tab=billing"),
+        run: () => router.push("/account?tab=billing"),
     },
     {
         id: "shortcuts",
@@ -75,6 +95,24 @@ const commands: Command[] = [
     },
 ];
 
+// Jump-to-project commands for the active workspace — the console power move.
+const projectCommands = computed<Command[]>(() =>
+    projects
+        .filter((p) => p.workspaceId === active.value.id)
+        .map((p) => ({
+            id: `project-${p.id}`,
+            label: p.name,
+            icon: PhFolder,
+            keywords: `project ${p.framework} ${p.repo}`,
+            run: () => router.push(`/projects/${p.id}`),
+        })),
+);
+
+const commands = computed<Command[]>(() => [
+    ...staticCommands,
+    ...projectCommands.value,
+]);
+
 const query = ref("");
 const selected = ref(0);
 const inputRef = ref<InstanceType<typeof Input>>();
@@ -82,8 +120,8 @@ const listRef = ref<HTMLElement>();
 
 const results = computed<Command[]>(() => {
     const q = query.value.trim().toLowerCase();
-    if (!q) return commands;
-    return commands.filter((c) =>
+    if (!q) return commands.value;
+    return commands.value.filter((c) =>
         `${c.label} ${c.keywords ?? ""}`.toLowerCase().includes(q),
     );
 });
@@ -124,12 +162,10 @@ watch(open, async (isOpen) => {
     (root?.querySelector("input") ?? root)?.focus();
 });
 
-// Reset the highlight to the top whenever the filtered list changes.
 watch(results, () => {
     selected.value = 0;
 });
 
-// Keep the highlighted row in view while arrowing.
 watch(selected, async () => {
     await nextTick();
     listRef.value
@@ -146,7 +182,7 @@ watch(selected, async () => {
                 <Input
                     ref="inputRef"
                     v-model="query"
-                    placeholder="Type a command or search…"
+                    placeholder="Type a command or search projects…"
                     class="border-0 bg-transparent shadow-none focus-within:ring-0"
                     role="combobox"
                     aria-controls="command-list"

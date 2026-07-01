@@ -48,26 +48,34 @@ const feed = computed<FeedItem[]>(() =>
 </script>
 
 <template>
-    <div class="flex w-full flex-col gap-6 px-6 py-8 md:px-10">
+    <div class="flex w-full flex-col gap-6 px-6 py-8 md:px-10 max-w-3xl">
         <!-- Toolbar -->
         <div class="flex w-full items-center justify-between gap-3">
-            <p class="text-sm text-text-secondary">
-                Deployments across your projects.
-            </p>
-            <Select v-model="statusFilter">
-                <SelectTrigger class="w-40">
-                    <span class="capitalize">{{
-                        statusFilter === "all" ? "All statuses" : statusFilter
-                    }}</span>
-                </SelectTrigger>
-                <SelectContent width="3xs">
-                    <SelectItem value="all">All statuses</SelectItem>
-                    <SelectItem value="ready">Ready</SelectItem>
-                    <SelectItem value="building">Building</SelectItem>
-                    <SelectItem value="failed">Failed</SelectItem>
-                </SelectContent>
-            </Select>
+            <div class="flex flex-col gap-1">
+                <h1 class="text-xl text-text-primary">Activity</h1>
+                <p class="text-sm text-text-secondary">
+                    Deployments across your projects.
+                </p>
+            </div>
+            <div class="justify-end">
+                <Select v-model="statusFilter">
+                    <SelectTrigger class="w-40">
+                        <span class="capitalize">{{
+                            statusFilter === "all"
+                                ? "All statuses"
+                                : statusFilter
+                        }}</span>
+                    </SelectTrigger>
+                    <SelectContent width="3xs">
+                        <SelectItem value="all">All statuses</SelectItem>
+                        <SelectItem value="ready">Ready</SelectItem>
+                        <SelectItem value="building">Building</SelectItem>
+                        <SelectItem value="failed">Failed</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
         </div>
+        <!-- Toolbar -->
 
         <!-- Timeline -->
         <DeploymentTimeline v-if="feed.length" :items="feed">
@@ -80,6 +88,7 @@ const feed = computed<FeedItem[]>(() =>
                 </RouterLink>
             </template>
         </DeploymentTimeline>
+        <!-- End Timeline -->
 
         <!-- Empty -->
         <Empty v-else>
@@ -93,5 +102,6 @@ const feed = computed<FeedItem[]>(() =>
                 </EmptyDescription>
             </EmptyHeader>
         </Empty>
+        <!-- End Empty -->
     </div>
 </template>

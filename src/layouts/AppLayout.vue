@@ -101,7 +101,6 @@ const helpOpen = ref(false);
                             :as="RouterLink"
                             :to="item.to"
                             :active="route.path.startsWith(item.to)"
-                            class="tracking-tight"
                         >
                             <component
                                 :is="item.icon"
@@ -183,10 +182,10 @@ const helpOpen = ref(false);
 
             <!-- Main area -->
             <div
-                class="relative mt-0 flex-1 overflow-auto rounded-none bg-bg-base shadow-md md:mt-2 md:rounded-tl-2xl"
+                class="relative mt-0 flex min-h-0 flex-1 flex-col overflow-hidden rounded-none bg-bg-base shadow-md md:mt-2 md:rounded-tl-2xl"
             >
                 <header
-                    class="flex items-center gap-2 border-b border-border-subtle p-3"
+                    class="flex shrink-0 items-center gap-2 border-b border-border-subtle p-2"
                 >
                     <SidebarTrigger />
                     <span

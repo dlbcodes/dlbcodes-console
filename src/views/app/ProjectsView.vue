@@ -28,7 +28,7 @@ const open = (id: string): void => {
     router.push(`/projects/${id}`);
 };
 
-// Delete modal — single instance owned here, target tracked in a ref.
+// Delete modal
 const deleteOpen = ref(false);
 const target = ref<Project | null>(null);
 
@@ -37,7 +37,7 @@ const askDelete = (project: Project): void => {
     deleteOpen.value = true;
 };
 const confirmDelete = (): void => {
-    // Stubbed — a forker removes the project from their backend here.
+    console.log("Deleted");
 };
 </script>
 
@@ -60,17 +60,21 @@ const confirmDelete = (): void => {
                 New Project
             </Button>
         </div>
+        <!-- End Toolbar -->
 
-        <!-- Two-column split: context sidebar + projects -->
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_3fr]">
-            <!-- Left: context -->
+        <!-- Two-column -->
+        <div
+            class="grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]"
+        >
+            <!-- Context -->
             <div class="flex flex-col gap-4">
                 <UsagePanel :usage="usage" />
                 <AlertsPanel />
                 <RecentPanel :items="recent" />
             </div>
+            <!-- End Context -->
 
-            <!-- Right: projects -->
+            <!-- Projects -->
             <div>
                 <div
                     v-if="filtered.length"
@@ -111,7 +115,9 @@ const confirmDelete = (): void => {
                     </Button>
                 </Empty>
             </div>
+            <!-- End Projects -->
         </div>
+        <!-- End Two-column -->
 
         <DeleteProjectModal
             v-model:open="deleteOpen"

@@ -11,11 +11,11 @@
 
 @layer base {
     html {
-        @apply antialiased;
+        @apply antialiased bg-bg-surface;
     }
 
     body {
-        @apply min-h-dvh bg-bg-base text-text-primary font-mono tracking-tight;
+        @apply min-h-dvh bg-bg-base text-text-primary font-sans;
     }
 }
 
@@ -76,8 +76,8 @@
     --color-border-strong: oklch(0.7587 0.0071 286.23);
 
     /* Brand — red */
-    --color-brand-100: oklch(0.5327 0.2186 29.23); /* #cd0000 darker hover */
-    --color-brand-200: oklch(0.5882 0.2309 28.29); /* #e61919 primary */
+    --color-brand-100: oklch(51.1% 0.262 276.966); /* #cd0000 darker hover */
+    --color-brand-200: oklch(58.5% 0.233 277.117); /* #e61919 primary */
 }
 
 /* Animations */

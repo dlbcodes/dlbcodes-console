@@ -58,8 +58,8 @@ const goToSettings = (): void => {
         class="cursor-pointer transition-colors hover:border-border-default"
         @click="emit('open', project.id)"
     >
-        <PanelContent class="flex flex-col gap-4 p-5">
-            <!-- Header: favicon (project identity) + name/domain + actions -->
+        <PanelContent class="flex flex-col gap-4 p-5 hover:bg-bg-surface/20">
+            <!-- Header -->
             <div class="flex items-start gap-3">
                 <div
                     class="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg"
@@ -118,8 +118,9 @@ const goToSettings = (): void => {
                     </DropdownContent>
                 </Dropdown>
             </div>
+            <!-- End Header -->
 
-            <!-- Repo + framework -->
+            <!-- Repo -->
             <div class="flex items-center gap-2">
                 <Badge variant="neutral" class="gap-1.5 font-mono">
                     <PhGithubLogo
@@ -141,6 +142,7 @@ const goToSettings = (): void => {
                     {{ project.framework }}
                 </span>
             </div>
+            <!-- End Repo -->
 
             <!-- Latest deployment -->
             <div
@@ -158,8 +160,9 @@ const goToSettings = (): void => {
                     {{ latest?.message ?? "No deployments yet" }}
                 </span>
             </div>
+            <!-- End Latest deployment -->
 
-            <!-- Meta: branch + time -->
+            <!--  branch + time ago -->
             <div class="flex items-center gap-3 text-xs text-text-tertiary">
                 <span class="flex items-center gap-1 font-mono">
                     <PhGitBranch class="size-3.5" aria-hidden="true" />
@@ -167,6 +170,7 @@ const goToSettings = (): void => {
                 </span>
                 <span>{{ timeAgo }}</span>
             </div>
+            <!--  End branch + time ago -->
         </PanelContent>
     </Panel>
 </template>

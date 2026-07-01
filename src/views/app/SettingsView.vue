@@ -29,7 +29,7 @@ const onChange = (index: number): void => {
 <template>
     <div class="flex flex-col gap-6 px-6 md:px-10 py-8">
         <div class="flex flex-col gap-1">
-            <h1 class="font-mono text-xl text-text-primary">Settings</h1>
+            <h1 class="text-xl text-text-primary">Settings</h1>
             <p class="text-sm text-text-secondary">
                 Manage your account, API keys, and billing.
             </p>
@@ -48,7 +48,7 @@ const onChange = (index: number): void => {
                 </TabsTrigger>
             </TabsList>
 
-            <TabsPanels class="mt-6 w-full md:max-w-3xl lg:max-w-4xl">
+            <TabsPanels class="mt-6 w-full max-w-3xl">
                 <TabsContent><ProfileSection /></TabsContent>
                 <TabsContent><ApiKeysSection /></TabsContent>
                 <TabsContent><BillingSection /></TabsContent>

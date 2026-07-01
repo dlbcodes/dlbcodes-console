@@ -33,19 +33,19 @@ const onDelete = (): void => {
             </FieldContent>
         </Field>
 
-        <Field>
-            <FieldLabel>Plan</FieldLabel>
-            <FieldContent>
-                <div class="flex items-center gap-2">
-                    <Badge :variant="planVariant(active.plan)">{{
-                        active.plan
-                    }}</Badge>
-                    <span class="text-sm text-text-secondary">
-                        Manage billing from your account to change the plan.
-                    </span>
-                </div>
-            </FieldContent>
-        </Field>
+        <!-- Plan  -->
+        <div class="flex flex-col gap-2">
+            <span class="text-sm font-medium text-text-primary">Plan</span>
+            <div class="flex items-center gap-2">
+                <Badge :variant="planVariant(active.plan)">{{
+                    active.plan
+                }}</Badge>
+                <span class="text-sm text-text-secondary">
+                    Manage billing from your account to change the plan.
+                </span>
+            </div>
+        </div>
+        <!-- End Plan  -->
 
         <Separator />
 
@@ -66,10 +66,11 @@ const onDelete = (): void => {
                     data.
                 </span>
             </div>
-            <Button variant="destructive" @click="deleteOpen = true"
-                >Delete</Button
-            >
+            <Button variant="destructive" @click="deleteOpen = true">
+                Delete
+            </Button>
         </div>
+        <!-- End Danger zone -->
 
         <DeleteWorkspaceModal
             v-model:open="deleteOpen"

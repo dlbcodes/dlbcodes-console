@@ -3,7 +3,6 @@ import { RouterLink } from "vue-router";
 import { Button } from "@dlbcodes/my-design-system";
 import { PhArrowRight } from "@phosphor-icons/vue";
 import BrandMark from "../components/BrandMark.vue";
-// Adjust the path to wherever your icon lives under src/assets.
 import InternetIcon from "../assets/icons/internet.png";
 </script>
 

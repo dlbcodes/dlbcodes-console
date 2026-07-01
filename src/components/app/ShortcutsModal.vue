@@ -15,13 +15,11 @@ const open = defineModel<boolean>("open", { required: true });
 
 const shortcuts = [
     { action: "Command palette", keys: ["⌘", "K"] },
-    { action: "New chat", keys: ["⌘", "⇧", "O"] },
     { action: "Toggle sidebar", keys: ["⌘", "B"] },
-    { action: "Go to settings", keys: ["⌘", ","] },
+    { action: "Switch workspace", keys: ["⌘", "1–9"] },
+    { action: "Go to account", keys: ["⌘", ","] },
     { action: "Get help", keys: ["⌘", "J"] },
     { action: "Keyboard shortcuts", keys: ["?"] },
-    { action: "Send message", keys: ["⏎"] },
-    { action: "New line", keys: ["⇧", "⏎"] },
 ];
 </script>
 
