@@ -12,7 +12,7 @@ const isMono = computed({
 
 <template>
     <div class="flex items-center gap-2">
-        <Label>Mono</Label>
-        <Switch v-model="isMono" />
+        <Label for="mono">Mono</Label>
+        <Switch id="mono" v-model="isMono" />
     </div>
 </template>
