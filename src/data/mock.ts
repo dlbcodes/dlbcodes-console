@@ -4,6 +4,10 @@ import type { Project, User, Workspace, Member } from "../types/console";
 // Mock data for the template. This is the only place fake data lives, so it's
 // the first thing to replace when you wire a real backend. The shapes conform
 // to the contracts in types/console.ts, so swapping in real data is type-safe.
+//
+// The "dlbcodes" workspace mirrors real projects in this ecosystem — the
+// design system this template is built with, its playground, and the two
+// companion templates — so the demo doubles as a tour of the work.
 // ─────────────────────────────────────────────────────────────────────────
 
 export const currentUser: User = {
@@ -14,7 +18,7 @@ export const currentUser: User = {
 
 // ── Workspaces (the switcher at the top of the sidebar) ──
 export const workspaces: Workspace[] = [
-	{ id: "acme", name: "Acme Inc", plan: "Enterprise" },
+	{ id: "dlbcodes", name: "dlbcodes", plan: "Enterprise" },
 	{ id: "personal", name: "Personal", plan: "Free" },
 ];
 
@@ -25,13 +29,13 @@ const now = Date.now();
 
 export const projects: Project[] = [
 	{
-		id: "marketing-site",
-		workspaceId: "acme",
-		name: "marketing-site",
-		framework: "Nuxt",
+		id: "my-design-system",
+		workspaceId: "dlbcodes",
+		name: "my-design-system",
+		framework: "Vue",
 		status: "active",
-		repo: "acme/marketing-site",
-		domain: "https://dlbcodes-playground.vercel.app",
+		repo: "dlbcodes/my-design-system",
+		domain: "my-design-system-beta.vercel.app",
 		region: "fra1",
 		updatedAt: now - 12 * MINUTE,
 		deployments: [
@@ -40,8 +44,8 @@ export const projects: Project[] = [
 				status: "ready",
 				branch: "main",
 				commit: "a3f8c21",
-				message: "Fix hero spacing on mobile",
-				author: "Dana Lewis",
+				message: "Add MultiSelect adaptive-width recipe",
+				author: "Daniel",
 				createdAt: now - 12 * MINUTE,
 				duration: 42,
 			},
@@ -50,31 +54,31 @@ export const projects: Project[] = [
 				status: "ready",
 				branch: "main",
 				commit: "7b1e094",
-				message: "Add pricing FAQ section",
-				author: "Dana Lewis",
+				message: "Document the Field compound family",
+				author: "Daniel",
 				createdAt: now - 5 * HOUR,
 				duration: 38,
 			},
 			{
 				id: "dpl_2c9d551",
 				status: "ready",
-				branch: "feat/testimonials",
+				branch: "feat/tokens",
 				commit: "2c9d551",
-				message: "Wire up testimonials carousel",
-				author: "Sam Ortiz",
+				message: "Expand semantic token layer",
+				author: "Daniel",
 				createdAt: now - 1 * DAY,
 				duration: 51,
 			},
 		],
 	},
 	{
-		id: "api-gateway",
-		workspaceId: "acme",
-		name: "api-gateway",
-		framework: "Node",
+		id: "dlbcodes-console",
+		workspaceId: "dlbcodes",
+		name: "dlbcodes-console",
+		framework: "Vue",
 		status: "building",
-		repo: "acme/api-gateway",
-		domain: "https://picdash.co",
+		repo: "dlbcodes/dlbcodes-console",
+		domain: "dlbcodes-console.vercel.app",
 		region: "iad1",
 		updatedAt: now - 2 * MINUTE,
 		deployments: [
@@ -83,8 +87,8 @@ export const projects: Project[] = [
 				status: "building",
 				branch: "main",
 				commit: "f04aa12",
-				message: "Add rate limiting middleware",
-				author: "Dana Lewis",
+				message: "Add git-style deployment timeline",
+				author: "Daniel",
 				createdAt: now - 2 * MINUTE,
 			},
 			{
@@ -92,43 +96,76 @@ export const projects: Project[] = [
 				status: "ready",
 				branch: "main",
 				commit: "9e22b73",
-				message: "Bump dependencies",
-				author: "Dana Lewis",
+				message: "Split account and team settings",
+				author: "Daniel",
 				createdAt: now - 8 * HOUR,
 				duration: 67,
 			},
 		],
 	},
 	{
-		id: "dashboard-app",
-		workspaceId: "acme",
-		name: "dashboard-app",
+		id: "dlbcodes-assistant",
+		workspaceId: "dlbcodes",
+		name: "dlbcodes-assistant",
 		framework: "Vue",
-		status: "failed",
-		repo: "acme/dashboard-app",
-		domain: "app.acme.dev",
+		status: "active",
+		repo: "dlbcodes/dlbcodes-assistant",
+		domain: "dlbcodes-assistant.vercel.app",
 		region: "fra1",
 		updatedAt: now - 40 * MINUTE,
 		deployments: [
 			{
 				id: "dpl_b81f3a0",
-				status: "failed",
-				branch: "feat/billing",
+				status: "ready",
+				branch: "main",
 				commit: "b81f3a0",
-				message: "Add billing usage meters",
-				author: "Sam Ortiz",
+				message: "Polish the command palette",
+				author: "Daniel",
 				createdAt: now - 40 * MINUTE,
-				duration: 19,
+				duration: 44,
 			},
 			{
 				id: "dpl_5d7c918",
 				status: "ready",
 				branch: "main",
 				commit: "5d7c918",
-				message: "Refactor sidebar navigation",
-				author: "Dana Lewis",
+				message: "Refactor sidebar into feature folders",
+				author: "Daniel",
 				createdAt: now - 2 * DAY,
 				duration: 55,
+			},
+		],
+	},
+	{
+		id: "dlbcodes-playground",
+		workspaceId: "dlbcodes",
+		name: "dlbcodes-playground",
+		framework: "Vue",
+		status: "active",
+		repo: "dlbcodes/dlbcodes-playground",
+		domain: "dlbcodes-playground.vercel.app",
+		region: "sfo1",
+		updatedAt: now - 3 * HOUR,
+		deployments: [
+			{
+				id: "dpl_cc41e8f",
+				status: "ready",
+				branch: "main",
+				commit: "cc41e8f",
+				message: "Dogfood library components in the customizer",
+				author: "Daniel",
+				createdAt: now - 3 * HOUR,
+				duration: 29,
+			},
+			{
+				id: "dpl_71fe302",
+				status: "ready",
+				branch: "main",
+				commit: "71fe302",
+				message: "Add live theme token editing",
+				author: "Daniel",
+				createdAt: now - 1 * DAY,
+				duration: 33,
 			},
 		],
 	},
@@ -144,12 +181,12 @@ export const projects: Project[] = [
 		updatedAt: now - 6 * HOUR,
 		deployments: [
 			{
-				id: "dpl_cc41e8f",
+				id: "dpl_cc41e8f2",
 				status: "ready",
 				branch: "main",
 				commit: "cc41e8f",
 				message: "Write up the theming deep-dive post",
-				author: "Dana Lewis",
+				author: "Daniel",
 				createdAt: now - 6 * HOUR,
 				duration: 29,
 			},
@@ -172,7 +209,7 @@ export const projects: Project[] = [
 				branch: "main",
 				commit: "18ab490",
 				message: "Pause cron jobs while reworking the API",
-				author: "Dana Lewis",
+				author: "Daniel",
 				createdAt: now - 9 * DAY,
 				duration: 73,
 			},
@@ -185,10 +222,10 @@ export const findProject = (id: string): Project | undefined =>
 
 // ── Team members (per workspace) ──
 export const members: Member[] = [
-	// Acme — a full team
+	// dlbcodes — a full team
 	{
 		id: "m1",
-		workspaceId: "acme",
+		workspaceId: "dlbcodes",
 		name: "Dana Lewis",
 		email: "dana@example.com",
 		role: "Owner",
@@ -196,7 +233,7 @@ export const members: Member[] = [
 	},
 	{
 		id: "m2",
-		workspaceId: "acme",
+		workspaceId: "dlbcodes",
 		name: "Sam Ortiz",
 		email: "sam@example.com",
 		role: "Admin",
@@ -204,7 +241,7 @@ export const members: Member[] = [
 	},
 	{
 		id: "m3",
-		workspaceId: "acme",
+		workspaceId: "dlbcodes",
 		name: "Priya Shah",
 		email: "priya@example.com",
 		role: "Member",
@@ -212,7 +249,7 @@ export const members: Member[] = [
 	},
 	{
 		id: "m4",
-		workspaceId: "acme",
+		workspaceId: "dlbcodes",
 		name: "",
 		email: "alex@example.com",
 		role: "Member",

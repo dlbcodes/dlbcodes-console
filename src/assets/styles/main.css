@@ -15,8 +15,24 @@
     }
 
     body {
-        @apply min-h-dvh bg-bg-base text-text-primary font-sans;
+        @apply min-h-dvh bg-bg-base text-text-primary;
     }
+}
+
+[data-font="mono"] {
+    @apply font-mono tracking-tight;
+    /* --font-sans: "Geist Mono", ui-monospace, monospace; */
+    /* Tighter tracking for the technical, console feel. */
+    /* --tracking-normal: -0.02em;
+    letter-spacing: var(--tracking-normal); */
+}
+
+[data-font="sans"] {
+    @apply font-sans tracking-normal;
+
+    /* --font-sans: "Geist", system-ui, sans-serif;
+    --tracking-normal: 0em;
+    letter-spacing: var(--tracking-normal); */
 }
 
 :root,

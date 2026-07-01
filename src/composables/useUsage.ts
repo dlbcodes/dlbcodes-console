@@ -9,12 +9,11 @@ export interface UsageMetric {
 	pct: number;
 }
 
-// Per-workspace usage (Acme is busy, Personal is quiet) plus recent deployments.
 export function useUsage() {
 	const { active } = useWorkspace();
 
 	const usage = computed<UsageMetric[]>(() => {
-		const heavy = active.value.id === "acme";
+		const heavy = active.value.id === "dlbcodes";
 		return [
 			{ label: "Edge Requests", used: heavy ? "847K" : "62K", limit: "1M", pct: heavy ? 85 : 6 },
 			{ label: "Function Invocations", used: heavy ? "612K" : "31K", limit: "1M", pct: heavy ? 61 : 3 },

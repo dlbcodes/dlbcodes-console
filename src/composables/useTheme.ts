@@ -1,7 +1,7 @@
 import { ref, watch } from "vue";
 
 export type Theme = "lattice" | "slate" | "zinc";
-
+export type FontMode = "sans" | "mono";
 
 export interface BrandInfo {
 	name: string;
@@ -14,13 +14,22 @@ const THEMES: Record<Theme, BrandInfo> = {
 	zinc: { name: "Zinc", tagline: "Simple. Sharp. Focused." },
 };
 
+// ─── Color theme (data-theme) ───
 const current = ref<Theme>("zinc");
 
-const apply = (theme: Theme): void => {
+const applyTheme = (theme: Theme): void => {
 	document.documentElement.setAttribute("data-theme", theme);
 };
 
-watch(current, apply, { immediate: true });
+watch(current, applyTheme, { immediate: true });
+
+const fontMode = ref<FontMode>("sans");
+
+const applyFont = (mode: FontMode): void => {
+	document.documentElement.setAttribute("data-font", mode);
+};
+
+watch(fontMode, applyFont, { immediate: true });
 
 export const useTheme = () => ({
 	current,
@@ -29,4 +38,12 @@ export const useTheme = () => ({
 		current.value = t;
 	},
 	brand: () => THEMES[current.value],
+
+	fontMode,
+	setFontMode: (m: FontMode): void => {
+		fontMode.value = m;
+	},
+	toggleFont: (): void => {
+		fontMode.value = fontMode.value === "mono" ? "sans" : "mono";
+	},
 });

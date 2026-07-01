@@ -35,6 +35,7 @@ import CommandPalette from "../components/app/CommandPalette.vue";
 import WorkspaceSwitcher from "../components/app/WorkspaceSwitcher.vue";
 import { projects } from "../data/mock";
 import { useWorkspace } from "../composables/useWorkspace";
+import FontSwitcher from "../components/FontSwitcher.vue";
 
 const route = useRoute();
 const pageTitle = computed(() => (route.meta.title as string) ?? "");
@@ -204,6 +205,7 @@ const helpOpen = ref(false);
                         >
                             <PhGithubLogo />
                         </Button>
+                        <FontSwitcher />
                         <ThemeSwitcher />
                     </div>
                 </header>
