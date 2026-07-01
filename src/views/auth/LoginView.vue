@@ -37,7 +37,7 @@ const remember = ref(false);
                 </div>
                 <div class="flex flex-col gap-2">
                     <Button
-                        to="/app"
+                        to="/"
                         variant="secondary"
                         class="w-full justify-center"
                     >
@@ -45,7 +45,7 @@ const remember = ref(false);
                         Continue with Google
                     </Button>
                     <Button
-                        to="/app"
+                        to="/"
                         variant="secondary"
                         class="w-full justify-center"
                     >
@@ -99,7 +99,7 @@ const remember = ref(false);
                     </div>
 
                     <Button
-                        to="/app"
+                        to="/"
                         variant="primary"
                         class="w-full justify-center"
                     >

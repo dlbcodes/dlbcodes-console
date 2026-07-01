@@ -37,16 +37,22 @@ const onChange = (index: number): void => {
         <Tabs :selected-index="activeIndex" @change="onChange">
             <TabsList class="justify-start overflow-x-auto *:shrink-0">
                 <TabsTrigger>
-                    <PhUsers class="size-4" aria-hidden="true" /> Members
+                    <PhUsers class="size-4" aria-hidden="true" />
+                    Members
                 </TabsTrigger>
                 <TabsTrigger>
-                    <PhGear class="size-4" aria-hidden="true" /> Settings
+                    <PhGear class="size-4" aria-hidden="true" />
+                    Settings
                 </TabsTrigger>
             </TabsList>
 
             <TabsPanels class="mt-6 w-full max-w-3xl">
-                <TabsContent><TeamMembers /></TabsContent>
-                <TabsContent><TeamSettings /></TabsContent>
+                <TabsContent>
+                    <TeamMembers />
+                </TabsContent>
+                <TabsContent>
+                    <TeamSettings />
+                </TabsContent>
             </TabsPanels>
         </Tabs>
     </div>

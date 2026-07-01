@@ -12,6 +12,7 @@ import { PhUser, PhKey, PhCreditCard } from "@phosphor-icons/vue";
 import ProfileSection from "../../components/app/settings/ProfileSection.vue";
 import ApiKeysSection from "../../components/app/settings/ApiKeysSection.vue";
 import BillingSection from "../../components/app/settings/BillingSection.vue";
+import { currentUser } from "../../data/mock";
 
 const route = useRoute();
 const router = useRouter();
@@ -29,7 +30,9 @@ const onChange = (index: number): void => {
 <template>
     <div class="flex flex-col gap-6 px-6 md:px-10 py-8">
         <div class="flex flex-col gap-1">
-            <h1 class="text-xl text-text-primary">Settings</h1>
+            <h1 class="text-xl text-text-primary">
+                Welcome, {{ currentUser.name.split(" ")[0] }}!
+            </h1>
             <p class="text-sm text-text-secondary">
                 Manage your account, API keys, and billing.
             </p>

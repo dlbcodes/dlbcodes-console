@@ -15,7 +15,7 @@ const THEMES: Record<Theme, BrandInfo> = {
 };
 
 // ─── Color theme (data-theme) ───
-const current = ref<Theme>("zinc");
+const current = ref<Theme>("slate");
 
 const applyTheme = (theme: Theme): void => {
 	document.documentElement.setAttribute("data-theme", theme);

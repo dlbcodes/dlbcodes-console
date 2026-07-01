@@ -67,7 +67,9 @@ const onRemove = (): void => {
                 People with access to {{ active.name }}.
             </p>
             <Button variant="primary" size="sm" @click="inviteOpen = true">
-                <PhPlus class="size-4" aria-hidden="true" /> Invite member
+                <PhPlus class="size-4" aria-hidden="true" />
+                <span class="md:hidden">Invite</span>
+                <span class="hidden md:inline">Invite member</span>
             </Button>
         </div>
 
@@ -93,14 +95,15 @@ const onRemove = (): void => {
                             >
                                 {{ m.name || m.email }}
                             </span>
-                            <Badge v-if="m.pending" variant="pending"
-                                >Pending</Badge
-                            >
+                            <Badge v-if="m.pending" variant="pending">
+                                Pending
+                            </Badge>
                         </div>
                         <span
                             class="truncate font-mono text-xs text-text-tertiary"
-                            >{{ m.email }}</span
                         >
+                            {{ m.email }}
+                        </span>
                     </div>
                     <Badge :variant="roleVariant(m.role)">{{ m.role }}</Badge>
                     <Dropdown placement="bottom-end">

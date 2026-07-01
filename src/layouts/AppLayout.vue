@@ -18,7 +18,6 @@ import {
     PhStack,
     PhPulse,
     PhUsers,
-    PhArrowCircleUp,
     PhMagnifyingGlass,
     PhGithubLogo,
     PhGlobe,
@@ -36,6 +35,7 @@ import WorkspaceSwitcher from "../components/app/WorkspaceSwitcher.vue";
 import { projects } from "../data/mock";
 import { useWorkspace } from "../composables/useWorkspace";
 import FontSwitcher from "../components/FontSwitcher.vue";
+import UpgradeCard from "../components/app/UpgradeCard.vue";
 
 const route = useRoute();
 const pageTitle = computed(() => (route.meta.title as string) ?? "");
@@ -48,13 +48,12 @@ const nav = [
     { label: "Team", icon: PhUsers, to: "/team", match: "team" },
 ];
 
-// Not built yet — shown disabled with a "Soon" badge to hint at the roadmap.
+// Not built yet
 const soon = [
     { label: "Domains", icon: PhGlobe },
     { label: "Storage", icon: PhHardDrives },
 ];
 
-// A few recent projects in the active workspace, for quick jump-to access.
 const recentProjects = computed(() =>
     projects
         .filter((p) => p.workspaceId === active.value.id)
@@ -152,24 +151,15 @@ const helpOpen = ref(false);
 
                 <!-- Footer -->
                 <SidebarFooter>
+                    <UpgradeCard />
+
+                    <Separator class="my-2" />
+
                     <UserMenu
                         @open-shortcuts="shortcutsOpen = true"
                         @open-help="helpOpen = true"
                     />
-                    <Separator class="my-2" />
-                    <Button
-                        to="/account?tab=billing"
-                        variant="outline"
-                        class="group flex w-full items-center bg-bg-raised px-2"
-                    >
-                        <div class="flex flex-1 items-center gap-x-2">
-                            <PhArrowCircleUp
-                                class="size-6 shrink-0 group-hover:text-brand-200"
-                                aria-hidden="true"
-                            />
-                            Upgrade to <span class="text-brand-200">Pro</span>
-                        </div>
-                    </Button>
+
                     <a
                         href="https://my-design-system-beta.vercel.app/"
                         target="_blank"

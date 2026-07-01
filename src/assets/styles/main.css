@@ -21,27 +21,18 @@
 
 [data-font="mono"] {
     @apply font-mono tracking-tight;
-    /* --font-sans: "Geist Mono", ui-monospace, monospace; */
-    /* Tighter tracking for the technical, console feel. */
-    /* --tracking-normal: -0.02em;
-    letter-spacing: var(--tracking-normal); */
 }
 
 [data-font="sans"] {
     @apply font-sans tracking-normal;
-
-    /* --font-sans: "Geist", system-ui, sans-serif;
-    --tracking-normal: 0em;
-    letter-spacing: var(--tracking-normal); */
 }
 
 :root,
 [data-theme="lattice"] {
-    /* --color-accent-pro-200: oklch(0.66 0.22 1); */
     --color-accent-pro-100: oklch(0.66 0.22 1);
 }
 
-/* ─── Zinc — shadcn's cool-gray base; near monochrome ─── */
+/* ─── Zinc  ─── */
 [data-theme="zinc"] {
     /* Backgrounds */
     --color-bg-base: oklch(1 0 0);
@@ -92,47 +83,6 @@
     --color-border-strong: oklch(0.7587 0.0071 286.23);
 
     /* Brand — red */
-    --color-brand-100: oklch(51.1% 0.262 276.966); /* #cd0000 darker hover */
-    --color-brand-200: oklch(58.5% 0.233 277.117); /* #e61919 primary */
-}
-
-/* Animations */
-@keyframes dot-cycle {
-    0% {
-        background-color: #e4f221;
-    }
-    33% {
-        background-color: #934cff;
-    }
-    66% {
-        background-color: #fb4d00;
-    }
-    100% {
-        background-color: #e4f221;
-    }
-}
-
-.group:hover .dot {
-    animation: dot-cycle 2.5s linear infinite;
-}
-
-.group:hover .dot:nth-child(2) {
-    animation-delay: -1s;
-}
-.group:hover .dot:nth-child(3) {
-    animation-delay: -2s;
-}
-
-@keyframes breathe {
-    0%,
-    100% {
-        transform: scale(0.95);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
-
-.animate-breathe {
-    animation: breathe 1.5s ease-in-out infinite;
+    --color-brand-100: oklch(51.1% 0.262 276.966);
+    --color-brand-200: oklch(58.5% 0.233 277.117);
 }

@@ -38,7 +38,7 @@ const password = ref("");
 
                 <div class="flex flex-col gap-2">
                     <Button
-                        to="/app"
+                        to="/"
                         variant="secondary"
                         class="w-full justify-center"
                     >
@@ -46,7 +46,7 @@ const password = ref("");
                         Continue with Google
                     </Button>
                     <Button
-                        to="/app"
+                        to="/"
                         variant="secondary"
                         class="w-full justify-center"
                     >
@@ -93,7 +93,7 @@ const password = ref("");
                     </Field>
 
                     <Button
-                        to="/app"
+                        to="/"
                         variant="primary"
                         class="w-full justify-center"
                     >
