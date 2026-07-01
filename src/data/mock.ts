@@ -32,10 +32,10 @@ export const projects: Project[] = [
 		id: "my-design-system",
 		workspaceId: "dlbcodes",
 		name: "my-design-system",
-		framework: "Vue",
+		framework: "VitePress",
 		status: "active",
 		repo: "dlbcodes/my-design-system",
-		domain: "my-design-system-beta.vercel.app",
+		domain: "ui.dlbcodes.com",
 		region: "fra1",
 		updatedAt: now - 12 * MINUTE,
 		deployments: [
@@ -78,7 +78,7 @@ export const projects: Project[] = [
 		framework: "Vue",
 		status: "building",
 		repo: "dlbcodes/dlbcodes-console",
-		domain: "dlbcodes-console.vercel.app",
+		domain: "console.dlbcodes.com",
 		region: "iad1",
 		updatedAt: now - 2 * MINUTE,
 		deployments: [
@@ -110,7 +110,7 @@ export const projects: Project[] = [
 		framework: "Vue",
 		status: "active",
 		repo: "dlbcodes/dlbcodes-assistant",
-		domain: "dlbcodes-assistant.vercel.app",
+		domain: "assistant.dlbcodes.com",
 		region: "fra1",
 		updatedAt: now - 40 * MINUTE,
 		deployments: [
@@ -143,7 +143,7 @@ export const projects: Project[] = [
 		framework: "Vue",
 		status: "active",
 		repo: "dlbcodes/dlbcodes-playground",
-		domain: "dlbcodes-playground.vercel.app",
+		domain: "playground.dlbcodes.com",
 		region: "sfo1",
 		updatedAt: now - 3 * HOUR,
 		deployments: [

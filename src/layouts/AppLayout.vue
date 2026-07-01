@@ -161,7 +161,7 @@ const helpOpen = ref(false);
                     />
 
                     <a
-                        href="https://my-design-system-beta.vercel.app/"
+                        href="https://ui.dlbcodes.com"
                         target="_blank"
                         class="flex justify-center pt-2 text-center text-xs text-text-tertiary transition-colors hover:text-text-primary"
                     >
