@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Switch, Label } from "@dlbcodes/my-design-system";
+import { Switch, Label } from "@dlbcodes/ui";
 import { useTheme } from "../composables/useTheme";
 import { computed } from "vue";
 

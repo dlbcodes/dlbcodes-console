@@ -8,7 +8,7 @@ import {
     Button,
     Separator,
     Avatar,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { currentUser } from "../../../data/mock";
 
 // Display only — a forker wires real persistence.

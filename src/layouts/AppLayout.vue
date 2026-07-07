@@ -13,7 +13,7 @@ import {
     Button,
     Badge,
     Separator,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import {
     PhStack,
     PhPulse,

@@ -6,7 +6,7 @@ import {
     DropdownContent,
     DropdownItem,
     Button,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhPalette, PhCheck } from "@phosphor-icons/vue";
 
 const { current, themes, setTheme } = useTheme();

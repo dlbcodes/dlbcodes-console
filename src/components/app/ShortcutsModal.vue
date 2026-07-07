@@ -9,7 +9,7 @@ import {
     ModalClose,
     Kbd,
     KbdGroup,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 
 const open = defineModel<boolean>("open", { required: true });
 

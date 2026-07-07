@@ -9,7 +9,7 @@ import {
     EmptyMedia,
     EmptyTitle,
     EmptyDescription,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhMagnifyingGlass, PhPlus, PhFolderOpen } from "@phosphor-icons/vue";
 import ProjectCard from "../../components/project/ProjectCard.vue";
 import UsagePanel from "../../components/project/UsagePanel.vue";

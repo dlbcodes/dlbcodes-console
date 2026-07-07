@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "@dlbcodes/my-design-system/tokens.css";
-@source "../../../node_modules/@dlbcodes/my-design-system/dist";
+@import "@dlbcodes/ui/tokens.css";
+@source "../../../node_modules/@dlbcodes/ui/dist";
 @import "./fonts.css" layer(utilities);
 
 @theme {

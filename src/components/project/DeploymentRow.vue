@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PhGitBranch, PhCircle } from "@phosphor-icons/vue";
 import { useTimeAgo } from "@vueuse/core";
-import { Badge } from "@dlbcodes/my-design-system";
+import { Badge } from "@dlbcodes/ui";
 import type { DeploymentStatus } from "../../types/console";
 
 interface Props {

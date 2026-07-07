@@ -16,7 +16,7 @@ import {
     SelectTrigger,
     SelectContent,
     SelectItem,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 
 const props = defineProps<{ name: string; currentRole: string }>();
 

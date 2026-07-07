@@ -9,7 +9,7 @@ import {
     DropdownTrigger,
     DropdownContent,
     DropdownItem,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import {
     PhPlus,
     PhDotsThreeVertical,

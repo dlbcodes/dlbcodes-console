@@ -11,7 +11,7 @@ import {
     Separator,
     Panel,
     PanelContent,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhGoogleLogo, PhGithubLogo } from "@phosphor-icons/vue";
 
 const name = ref("");

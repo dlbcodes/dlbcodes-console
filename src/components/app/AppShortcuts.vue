@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useSidebar } from "@dlbcodes/my-design-system";
+import { useSidebar } from "@dlbcodes/ui";
 import { useMagicKeys, whenever, useActiveElement } from "@vueuse/core";
 import { useWorkspace } from "../../composables/useWorkspace";
 

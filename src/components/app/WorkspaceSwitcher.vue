@@ -8,7 +8,7 @@ import {
     Kbd,
     Separator,
     Button,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhCaretUpDown, PhCheck, PhPlus, PhGear } from "@phosphor-icons/vue";
 import { useRouter } from "vue-router";
 import { useWorkspace } from "../../composables/useWorkspace";

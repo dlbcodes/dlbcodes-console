@@ -14,7 +14,7 @@ import {
     FieldContent,
     FieldError,
     Input,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 
 const props = defineProps<{ name: string }>();
 

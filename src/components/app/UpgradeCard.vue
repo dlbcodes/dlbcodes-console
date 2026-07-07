@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { Button } from "@dlbcodes/my-design-system";
+import { Button } from "@dlbcodes/ui";
 import { PhArrowCircleUp } from "@phosphor-icons/vue";
 </script>
 

@@ -8,7 +8,7 @@ import {
     ModalFooter,
     ModalClose,
     Button,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 
 defineProps<{ name: string; workspace: string }>();
 

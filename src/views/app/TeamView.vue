@@ -7,7 +7,7 @@ import {
     TabsTrigger,
     TabsPanels,
     TabsContent,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhUsers, PhGear } from "@phosphor-icons/vue";
 import TeamMembers from "../../components/team/TeamMembers.vue";
 import TeamSettings from "../../components/team/TeamSettings.vue";

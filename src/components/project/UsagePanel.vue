@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import {
-    Panel,
-    PanelHeader,
-    PanelContent,
-    Progress,
-} from "@dlbcodes/my-design-system";
+import { Panel, PanelHeader, PanelContent, Progress } from "@dlbcodes/ui";
 import { PhChartLineUp } from "@phosphor-icons/vue";
 
 interface UsageMetric {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { Panel, PanelHeader, PanelContent } from "@dlbcodes/my-design-system";
+import { Panel, PanelHeader, PanelContent } from "@dlbcodes/ui";
 import { PhGitBranch, PhCircle } from "@phosphor-icons/vue";
 import type { DeploymentStatus } from "../../types/console";
 

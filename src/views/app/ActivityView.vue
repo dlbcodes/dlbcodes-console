@@ -11,7 +11,7 @@ import {
     EmptyMedia,
     EmptyTitle,
     EmptyDescription,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhPulse } from "@phosphor-icons/vue";
 import DeploymentTimeline from "../../components/project/DeploymentTimeline.vue";
 import { projects } from "../../data/mock";

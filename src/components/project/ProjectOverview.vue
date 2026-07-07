@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-    Panel,
-    PanelHeader,
-    PanelContent,
-    Badge,
-} from "@dlbcodes/my-design-system";
+import { Panel, PanelHeader, PanelContent, Badge } from "@dlbcodes/ui";
 import {
     PhTag,
     PhGlobe,

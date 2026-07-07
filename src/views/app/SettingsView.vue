@@ -7,7 +7,7 @@ import {
     TabsTrigger,
     TabsPanels,
     TabsContent,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhUser, PhKey, PhCreditCard } from "@phosphor-icons/vue";
 import ProfileSection from "../../components/app/settings/ProfileSection.vue";
 import ApiKeysSection from "../../components/app/settings/ApiKeysSection.vue";

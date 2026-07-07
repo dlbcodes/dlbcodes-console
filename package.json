@@ -9,7 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@dlbcodes/my-design-system": "^0.7.1",
+        "@dlbcodes/ui": "^0.8.0",
         "@phosphor-icons/vue": "^2.2.1",
         "@tailwindcss/vite": "^4.3.2",
         "@vercel/analytics": "^2.0.1",

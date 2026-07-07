@@ -10,7 +10,7 @@ import {
     SelectTrigger,
     SelectContent,
     SelectItem,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhWarning } from "@phosphor-icons/vue";
 import type { Project } from "../../types/console";
 

@@ -8,7 +8,7 @@ import {
     Input,
     Kbd,
     KbdGroup,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import {
     PhMagnifyingGlass,
     PhStack,

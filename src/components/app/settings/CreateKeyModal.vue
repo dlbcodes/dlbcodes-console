@@ -21,7 +21,7 @@ import {
     Alert,
     AlertTitle,
     AlertDescription,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhCopy, PhCheck, PhWarning } from "@phosphor-icons/vue";
 import { useClipboard } from "@vueuse/core";
 

@@ -8,7 +8,7 @@ import {
     Badge,
     Button,
     Separator,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import { PhWarning } from "@phosphor-icons/vue";
 import { useWorkspace } from "../../composables/useWorkspace";
 import DeleteWorkspaceModal from "./DeleteWorkspaceModal.vue";

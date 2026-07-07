@@ -9,7 +9,7 @@ import {
     Kbd,
     KbdGroup,
     useSidebar,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 import {
     PhSquaresFour,
     PhGear,

@@ -6,7 +6,7 @@ import {
     Badge,
     Progress,
     Separator,
-} from "@dlbcodes/my-design-system";
+} from "@dlbcodes/ui";
 
 // Stubbed billing — a forker wires this to their billing provider.
 const currentPlan = { name: "Pro", price: 20, renews: "April 12, 2026" };
